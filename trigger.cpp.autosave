@@ -1,0 +1,13 @@
+#include "trigger.h"
+
+Trigger::Trigger(QString &trName, QString &_trName, int x, int y)
+{
+     path = "triggers/" +  trName;
+    _path = "triggers/" + _trName;
+    setPixmap(QPixmap(path));
+    _x = x;
+    _y = y;
+
+    QuestEvent *ev = NULL;
+    QuestItem  *it = NULL;
+}

@@ -1,0 +1,26 @@
+#ifndef TRIGGER_H
+#define TRIGGER_H
+
+#include <QGraphicsPixmapItem>
+
+class Trigger : public QGraphicsPixmapItem
+{
+private:
+    float _x, _y;
+    QString  path;
+    QString _path;
+    QuestEvent *ev;
+    QuestItem  *it;
+public:
+    Trigger(QString & trName, QString &_trName, int x, int y);
+    Trigger(QString & trName, int x, int y);
+    
+    QuestEvent & takeEv(){ return ev; }
+    QuestEvent & takeIt(){ return it; }
+
+    void showUp() { setPos(_x, _y); }
+    void linkEvent(QuestEvent *ev) { this->ev = ev; }
+    void linkItem (QuestItem  *it) { this->it = it; }
+};
+
+#endif // TRIGGER_H

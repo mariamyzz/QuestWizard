@@ -1,0 +1,70 @@
+#ifndef QUESTEVENT_H
+#define QUESTEVENT_H
+
+#include "questitem.h"
+#include "trigger.h"
+#include <QList>
+#include <QString>
+
+class QuestItem;
+
+class QuestEvent
+{
+public:
+    QuestEvent(QString name, QString descr, QString img);
+    QuestEvent(QString name, QString descr);
+
+    QList<Trigger*> triggers;
+
+    void addTriggers(Trigger *tr, Trigger *tr2, Trigger *tr3);
+    void addTriggers(Trigger *tr, Trigger *tr2);
+    void addTriggers(Trigger *tr);
+
+    void setImage(QString linkDir);
+    void setTriggersFlag(bool f) { hasTriggers = f; }
+    void setMusic(QString linkDir); 
+    void setSoundWalkIn(QString linkDir) { *EventSoundWalkIn = linkDir; }
+    void setSoundBack(QString linkDir) { *EventSoundBack   = linkDir; }
+    void setSoundUseless(QString linkDir) { *EventUselessSound   = linkDir; }
+    void setKeyItem(QuestItem* item);
+    void setKeyLocation(QuestEvent *ev, QString mes);
+    void setKeyLocation(QuestEvent *ev);
+
+    void setActionMessages(QString EnabledMessage, QString DisabledMessage);
+    void setUselessMessage(QString mes);
+    void setFirstVisitMessage(QString mes);
+    void setKinetic(bool key);
+    void makeSpecialDescription();
+
+    QString   getName();
+    QString   getImage();
+    QString   getMusic();
+    QString   getEnM();
+    QString   getDiM();
+    QString   getUsM();
+    QString   getUsS();
+    QString   getFvM();
+    QString   getDiscription();
+    QuestItem getKeyItem();
+
+    bool isVisited;
+    bool hasTriggers;
+
+    QString *EventName;
+    QString *EventDiscripton;
+    QString *EventEnabled;
+    QString *EventDisabled;
+    QString *EventUseless;
+    QString *EventFirstVisit;
+    QString *EventImage;
+    QString *EventMusic;
+    QString *EventUselessSound;
+    QString *EventSoundWalkIn;
+    QString *EventSoundBack;
+    QString *_EventDiscripton;
+
+    QuestItem  *KeyItem;
+    QuestEvent *KeyLocation;
+};
+
+#endif // QUESTEVENT_H

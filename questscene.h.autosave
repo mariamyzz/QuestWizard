@@ -1,0 +1,23 @@
+#ifndef QUESTSCENE_H
+#define QUESTSCENE_H
+
+#include <QGraphicsScene>
+#include <QGraphicsPixmapItem>
+
+class QuestScene : public QGraphicsScene
+{
+private:
+    QGraphicsPixmapItem *background;
+    QGraphicsPixmapItem *textbox;
+public:
+    void mousePressEvent(QGraphicsSceneMouseEvent *event);
+    QuestScene();
+signals:
+    void sendEv(QuestEvent*);
+    void sendIt(QuestItem*);
+public slots:
+    void setNewBackground(QString path);
+    void setText(QString text);
+};
+
+#endif // QUESTSCENE_H
